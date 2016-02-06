@@ -1,0 +1,30 @@
+<div ng-controller="IndexCtrl">
+	<div data-ng-include=" '/template/block/header.html' "> </div>
+	<div ng-controller="showCtrl">
+		<div class="row">
+			<div class="jumbotron">
+				<div class="container">
+					<h1>{{data.title}}</h1>
+					<p>发表于：{{data.created_at}}</p>
+				</div>
+			</div>
+		</div>
+		<div class="row main">
+			<div class="container">
+				<div class="col-md-9">
+					<div class="row">
+						<div class="article-main" ng-bind-html="content">
+						</div>
+					</div>
+					<div class="row">
+						<div data-ng-include=" '/template/block/comment.html' "> </div>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div data-ng-include=" '/template/block/side-navbar.html' "> </div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div data-ng-include=" '/template/block/footer.html' "> </div>
+</div>

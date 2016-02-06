@@ -1,0 +1,21 @@
+<div class="" ng-controller="bookShowCtrl">
+	<h2>《{{ book.name }}》</h2>
+	<p>{{ book.description }}</p>
+	<div class="row">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<form ng-submit="nowSubmit()">
+					<div class="form-group row">
+						<label for="now" class="label-control col-sm-1">Now</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control" name="now" ng-model="book.now" autocomplete="off">
+						</div>
+						<div class="col-sm-2">
+							<button type="submit" class="btn btn-sm btn-success">Submit</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

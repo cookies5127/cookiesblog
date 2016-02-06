@@ -1,0 +1,11 @@
+	<div class="row" ng-controller="homeCtrl">
+		<div class="a-list" ng-repeat="item in posts">
+			<h2><a ui-sref="show({ postid:item.id,url:'posts' })">{{ item.title }}</a> <small>{{ item.time }}</small></h2>
+			<div class="sumy">
+				<p>{{ item.summary }} </p>
+			</div>
+			<div class="info">
+				发表时间：{{ item.created_at }} &nbsp&nbsp 分类：<a ui-sref="index.list({ cates:item.category_id })">{{ item.name }}</a>
+			</div>
+		</div>
+	</div>

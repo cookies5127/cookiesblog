@@ -1,0 +1,230 @@
+<div class="" ng-controller="projectShowCtrl">
+	<h2>{{ project.p_name }} <small>v.{{ project.v_id }}</small></h2>
+	<p>{{ project.p_description }}</p>
+	<div class="row">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				#
+				<a ng-click="form('prosword')" class="btn pull-right btn-sm btn-primary">word</a>
+				<a ng-click="form('prosthink')" class="btn pull-right btn-sm btn-warning">think</a>
+				<a ng-click="form('prosplan')" class="btn pull-right btn-sm btn-danger">Plan</a>
+				<a ng-click="form('prosbug')" class="btn pull-right btn-sm btn-success">Bug</a>
+				<a ng-click="form('proscheck')" class="btn pull-right btn-sm btn-default">Check</a>
+			</div>
+			<div class="panel-body" ng-switch="proInput">
+				<form ng-submit="dataSubmit()" ng-switch-when="prosword">
+					<div class="form-group row">
+						<label for="pw_word" class="label-control col-sm-1">Word</label>
+						<div class="col-sm-4">
+							<input type="text" class="form-control" name="pw_word" ng-model="project.pw_word" autocomplete="off">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="pw_content" class="label-control col-sm-1">Content</label>
+						<div class="col-sm-11">
+							<input type="text" class="form-control" name="pw_content" ng-model="project.pw_content" autocomplete="off">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-offset-1 col-sm-11">
+							<button type="submit" class="btn btn-sm btn-success">Submit</button>
+							<button type="reset" class="btn btn-sm btn-default">Reset</button>
+						</div>
+					</div>
+				</form>
+				<form ng-submit="dataSubmit()" ng-switch-when="prosthink">
+					<div class="row">
+						<div class="col-md-8">
+							<div class="form-group">
+								<label for="pt_content">Content</label>
+								<textarea rows="12" class="form-control" name="pt_content" ng-model="project.pt_content"></textarea>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="form-group">
+								<label for="pt_check">Check</label>
+								<textarea rows="4" class="form-control" name="pt_check" ng-model="project.pt_check"></textarea>
+							</div>
+							<div class="form-group">
+								<label for="pt_require">Require</label>
+								<textarea rows="4" class="form-control" name="pt_require" ng-model="project.pt_require"></textarea>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="pt_expect">Expect</label>
+						<input type="text" class="form-control" name="pt_expect" ng-model="project.pt_expect">
+					</div>
+					<div class="">
+						<button type="submit" class="btn btn-sm btn-success">Submit</button>
+						<button type="reset" class="btn btn-sm btn-default">Reset</button>
+					</div>
+				</form>
+				<form ng-submit="dataSubmit()" ng-switch-when="prosplan">
+					<div class="row">
+						<div class="col-md-4">
+							<div class="form-group row">
+								<label for="pp_when" class="label-control col-sm-3">deadline</label>
+								<div class="col-sm-9">
+									<input type="text" class="form-control" name="pp_when" ng-model="project.pp_when" autocomplete="off">
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="form-group row">
+								<label for="pp_cost" class="label-control col-sm-2">Cost</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" name="pp_cost" ng-model="project.pp_cost" autocomplete="off">
+								</div>
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="form-group row">
+								<label for="pp_what" class="label-control col-sm-1">What</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" name="pp_what" ng-model="project.pp_what" autocomplete="off">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row" ng-show="project.pp_id">
+						<div class="col-md-4">
+							<div class="form-group row">
+								<label for="pp_fact_cost" class="label-control col-sm-3">fact_cost</label>
+								<div class="col-sm-9">
+									<input type="text" class="form-control" name="pp_fact_cost" ng-model="project.pp_fact_cost" autocomplete="off">
+								</div>
+							</div>
+						</div>
+						<div class="col-md-8">
+							<div class="form-group row">
+								<label for="pp_log" class="label-control col-sm-1">log</label>
+								<div class="col-sm-9">
+									<input type="text" class="form-control" name="pp_log" ng-model="project.pp_log" autocomplete="off">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-offset-1 col-sm-11">
+							<button type="submit" class="btn btn-sm btn-success">Submit</button>
+							<button type="reset" class="btn btn-sm btn-default">Reset</button>
+						</div>
+					</div>
+				</form>
+				<form ng-submit="dataSubmit()" ng-switch-when="prosbug">
+					<div class="form-group row">
+						<label for="pb_bug" class="label-control col-sm-1">Bug</label>
+						<div class="col-sm-8">
+							<input type="text" class="form-control" name="pb_bug" ng-model="project.pb_bug" autocomplete="off">
+						</div>
+						<div class="col-sm-2">
+							<button type="submit" class="btn btn-sm btn-success">Submit</button>
+						</div>
+					</div>
+				</form>
+				<form ng-submit="dataSubmit()" ng-switch-when="proscheck">
+					<div class="form-group row">
+						<label for="pc_question" class="label-control col-sm-1">Question</label>
+						<div class="col-sm-11">
+							<input type="text" class="form-control" name="pc_question" ng-model="project.pc_question" autocomplete="off">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="pc_answer" class="label-control col-sm-1">answer</label>
+						<div class="col-sm-11">
+							<input type="text" class="form-control" name="pc_answer" ng-model="project.pc_answer" autocomplete="off">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-offset-1 col-md-11">
+							<button type="submit" class="btn btn-sm btn-success">Submit</button>
+							<button type="reset" class="btn btn-sm btn-default">Reset</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="row" ng-switch="proOutput">
+		<div class="list-group" ng-switch-when="prosword">
+			<div class="row">
+				<div class="col-md-6" ng-repeat="word in project.words">
+					<a class="list-group-item" ng-click="wordLook(word.pw_id)">
+						<h4 class="list-group-item-heading">{{ word.pw_word }}</h4>
+						<p class="list-group-item-text">{{ word.pw_content }}</p>
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="" ng-switch-when="prosthink">
+			<div class="col-md-12">
+				<h5>项目构想</h5>
+				<p>在关键字思考结束后，写项目构想、检查标准和项目要求在这里。
+					<a class="pull-right btn btn-primary" ng-click="thinkEdit( project.thinks.pt_id )">edit</a>
+				</p>
+			</div>
+			<div class="col-md-8">
+				<div class="article-main" ng-bind-html="project.thinks.pt_content">
+				</div>
+			</div>
+			<div class="col-md-4" style="margin-top: 60px;">
+				<h5>项目检查标准</h5>
+				<div ng-bind-html="project.thinks.pt_check">
+				</div>
+				<h5>项目要求</h5>
+				<div ng-bind-html="project.thinks.pt_require">
+				</div>
+				<h5>项目预期</h5>
+				<div ng-bind-html="project.thinks.pt_expect">
+				</div>
+			</div>
+		</div>
+		<div class="list-group" ng-switch-when="prosplan">
+			<div class="col-md-6">
+				<h6>计划</h6>
+				<div class="row">
+					<a class="list-group-item" ng-click="planLook(plan.pp_id)" ng-repeat="plan in project.plans.plans">
+						<h5 class="list-group-item-heading">{{ plan.pp_what }}<small></small></h5>
+						<p class="list-group-item-text"> cost:<code>{{ plan.pp_cost }}工作时</code> deadline:{{ plan.pp_when }}</p>
+					</a>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<h6>完成的计划</h6>
+				<div class="row">
+					<a class="list-group-item" ng-click="planLook(plan.pp_id)" ng-repeat="plan in project.plans.finish">
+						<h5 class="list-group-item-heading">{{ plan.pp_what }}<small></small></h5>
+						<p class="list-group-item-text">日志：{{ plan.pp_log }}</p>
+						<p class="list-group-item-text"> cost:<code>{{ plan.pp_cost }}&nbsp fact_cost:{{ plan.pp_fact_cost }}</code> deadline:{{ plan.pp_when }}</p>
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="list-group" ng-switch-when="prosbug">
+			<div class="col-md-6">
+				<h6>未解决</h6>
+				<div class="row">
+					<a class="list-group-item" ng-repeat="bug in project.bug.bugs" ng-click="bugFinish(bug.pb_id)">
+						{{bug.pb_bug}}
+					</a>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<h6>解决了的</h6>
+				<div class="row">
+					<a class="list-group-item" ng-repeat="bugfinish in project.bug.bugsfinish">
+						{{bugfinish.pb_bug}}
+					</a>
+				</div>
+			</div>
+			</div>
+		</div>
+		<div class="list-group" ng-switch-when="proscheck">
+			<a class="list-group-item" ng-click="checkLook(check.pc_id)" ng-repeat="check in project.checks">
+				<h4 class="list-group-item-heading">{{ check.pc_question }}</h4>
+				<p class="list-group-item-text">{{ check.pc_answer }}</p>
+			</a>
+		</div>
+	</div>
+</div>

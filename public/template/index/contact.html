@@ -1,0 +1,31 @@
+			<div class="row" ng-controller="contactCtrl">
+				<h2>联系我</h2>
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<div class="alert alert-info">请完成下列信息.</div>
+						<form ng-submit="emailSubmit()">
+							<div class="form-group row">
+								<label for="name" class="col-xs-1 control-label">姓名</label>
+								<div class="col-xs-10">
+									<input class="form-control" type="text" name="name" ng-model="data.name" autocomplete="off">
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="email" class="col-xs-1 control-label">邮箱</label>
+								<div class="col-xs-10">
+									<input class="form-control" type="email" name="email" ng-model="data.email" autocomplete="off">
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="content" class="col-xs-1 control-label">内容</label>
+								<div class="col-xs-10">
+									<textarea name="content" class="form-control" rows="5" ng-model="data.content"></textarea>
+								</div>
+							</div>
+							<div class="col-xs-offset-1">
+								<input type="submit" value="submit" class="btn btn-success">
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>

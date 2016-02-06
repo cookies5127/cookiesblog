@@ -1,0 +1,49 @@
+<div class="" ng-controller="thinkCtrl">
+	<h2>思考板</h2>
+	<div class="row">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<form ng-submit="thinkSubmit()">
+					<div class="row">
+						<div class="col-md-8">
+							<div class="row">
+								<div class="col-md-12">
+									<input type="text" class="form-control" name="title" ng-model="data.title" autocomplete="off">
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<button type="submit" class="btn btn-sm btn-success">Submit</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>id</th>
+				<th>name</th>
+				<th>body</th>
+				<th>words</th>
+				<th>选项</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="item in lists">
+				<td>{{ item.t_id}}</td>
+				<td>{{ item.title }}</td>
+				<td>
+					{{ item.body ? '' : '0' }}
+					<a ui-sref="show({ postid:item.t_id,url:'thinks' })" ng-show="item.body">body</a>
+				</td>
+				<td>{{ item.words.length }}</td>
+				<td>
+					<a class="btn btn-sm btn-success" ui-sref="admin.think.show({ tid:item.t_id })"><i class="glyphicon glyphicon-edit"></i> show</a>
+					<a class="btn btn-sm btn-primary" ui-sref="editor({ url:'thinks', id:item.t_id })"><i class="glyphicon glyphicon-edit"></i> edit</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

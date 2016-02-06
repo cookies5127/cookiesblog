@@ -1,0 +1,119 @@
+<div class="row" ng-controller="dashboard">
+	<div class="row">
+		<div class="col-md-12">
+			<h2>后台面板</h2>
+			<p>
+				<a class="btn btn-sm btn-success pull-left" ui-sref="admin.schedule">Schedule</a>
+				<a class="btn btn-sm btn-success pull-left" ui-sref="admin.frag">Frag</a>
+				<a class="btn btn-sm btn-info pull-left" ui-sref="admin.post">Post</a>
+				<a class="btn btn-sm btn-info pull-left" ui-sref="admin.think.list">Think</a>
+				<a class="btn btn-sm btn-warning pull-left" ui-sref="markdown">Markdown</a>
+			</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-8">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					日程管理
+					<a class="pull-right" ui-sref="admin.schedule">More</a>
+				</div>
+				<div class="panel-body schedule">
+					<div class="input-group input-group-sm">
+						<div class="input-group-btn">
+							<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								{{ name ? name : '下拉' }} &nbsp;<span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu">
+								<li><a ng-click="dropdown('getfin', '计时')">计时</a></li>
+								<li><a ng-click="dropdown('work', '工作')">工作</a></li>
+								<li><a ng-click="dropdown('learning', '学习')">学习</a></li>
+								<li><a ng-click="dropdown('waste', '浪费')">浪费</a></li>
+								<li><a ng-click="dropdown('exercise', '锻炼')">锻炼</a></li>
+								<li role="separator" class="divider"></li>
+								<li><a ng-click="dropdown('summary', '总结')">总结</a></li>
+							</ul>
+						</div>
+						<input type="text" class="form-control" auto-complete="off" ng-model="input" placeholder="这里必须要写点什么">
+						<div class="input-group-btn">
+							<a class="btn btn-success" ng-click="schedule(slug, input)">Submit</a>
+						</div>
+					</div>
+				</div>
+				<div class="list-group" style="height: 340px;overflow-y:scroll">
+					<a class="list-group-item list-group-item-{{ schedule.s_type }}" ng-repeat="schedule in schedules">
+						{{ schedule.s_name }} 工作时：<code>{{ schedule.s_cost }}</code> 分钟：<code>{{ schedule.s_minute }}</code>
+						<p class="pull-right hidden-sm hidden-xs">{{ schedule.created_at }}</p>
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					项目列表<a class="pull-right" ui-sref="admin.project.list">More</a>
+				</div>
+				<div class="list-group" style="height: 160px;overflow-y:scroll">
+					<a class="list-group-item" ui-sref="admin.project.show({ pid:project.p_id, vid:project.v_id })" ng-repeat="project in projects">
+						{{ project.p_name }} v.{{ project.v_id }}
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					月工作安排<a class="pull-right" ui-sref="admin.month">More</a>
+				</div>
+				<div class="list-group" style="height: 170px;overflow-y:scroll">
+					<a class="list-group-item" ng-repeat="month in months">
+						{{ month.m_name }} <span class="pull-right">{{ month.m_cost }}</span>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-5">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					Frag<a class="pull-right" ui-sref="admin.frag">More</a>
+				</div>
+				<div class="panel-body">
+					<textarea class="form-control" ng-model="fra.content"></textarea>
+					<a class="btn btn-sm btn-success" ng-click="frag(fra)">Submit</a>
+					<a class="btn btn-sm btn-default">Reset</a>
+				</div>
+				<div class="list-group" style="height: 275px;overflow-y:scroll">
+					<a class="list-group-item" ng-repeat="f in frags">
+						{{ f.content }}
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-3">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					待办事物<a class="pull-right" ui-sref="admin.todolist">More</a>
+				</div>
+				<div class="list-group" style="height: 400px;overflow-y:scroll">
+					<a class="list-group-item list-group-item-{{ t.td_type }}" ng-repeat="t in todos">
+						{{ t.td_name }} 
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					图书列表<a class="pull-right" ui-sref="admin.book.list">More</a>
+				</div>
+				<div class="list-group" style="height: 400px;overflow-y:scroll">
+					<a class="list-group-item" ui-sref="admin.book.show({ bookid:book.b_id })" ng-repeat="book in books">
+						《{{ book.name }}》 <span class="pull-right">now：{{ book.now }}%</span>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

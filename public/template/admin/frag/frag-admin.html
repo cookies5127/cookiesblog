@@ -1,0 +1,39 @@
+<div class="" ng-controller="fragCtrl">
+	<div class="row">
+		<div class="col-md-12">
+			<h2>碎片记录</h2>
+		</div>
+		<div class="col-md-12">
+			<p>有一些不太成熟的想法需要记录下来。</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<div class="alert alert-info">
+					填写下述相关信息。
+				</div>
+				<form ng-submit="fragSubmit()">
+					<div class="form-group">
+						<textarea class="form-control" type="text" name="content" rows="2" cols="30" ng-model="data.content"></textarea>
+					</div>
+					<div class="row">
+						<div class="col-md-1 col-sm-2">
+							<button type="submit" class="btn btn-success">提交</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="memo-list">
+			<div class="list-group">
+				<a class="list-group-item" ng-repeat="item in lists">
+					<div class="content">{{ item.content }}</div>
+					<div class="time">创建于{{ item.created_at }}</div>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>

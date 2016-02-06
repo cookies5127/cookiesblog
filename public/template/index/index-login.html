@@ -1,0 +1,29 @@
+<div ng-controller="IndexCtrl">
+
+	<div data-ng-include=" '/template/block/header.html' "> </div>
+	<div class="row main">
+		<div class="col-md-4 col-md-offset-4">
+			<div class="row">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<h3>Admin Login</h3>
+						<div class="alert alert-{{ info.type }}">
+							{{ info.content }}
+						</div>
+						<div class="input-group">
+							<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+							<input type="text" class="form-control" name="name" ng-model="name" placeholder="用户名" autocomplete="off">
+						</div>
+						<div class="input-group">
+							<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+							<input type="password" class="form-control" name="password" ng-model="password" placeholder="密码">
+						</div>
+						<a class="btn btn-success" ng-click="login(name, password)" style="width:100%">登 录</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div data-ng-include=" '/template/block/footer.html' "> </div>
+
+</div>

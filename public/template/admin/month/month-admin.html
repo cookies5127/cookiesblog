@@ -1,0 +1,84 @@
+<div class="" ng-controller="monthCtrl">
+	<h2>月工作计划</h2>
+	<div class="row">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<form ng-submit="monthSubmit()">
+					<div class="alert alert-info">那个月要做什么？</div>
+					<div class="row">
+						<div class="col-md-4">
+							<div class="form-group row">
+								<label for="m_name" class="col-md-3 control-label">内容</label>
+								<div class="col-md-9">
+									<input type="text" class="form-control" name="m_name" ng-model="data.m_name" autocomplete="off">
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="form-group row">
+								<label for="m_when" class="col-md-3 control-label">月</label>
+								<div class="col-md-9">
+									<input type="text" class="form-control" name="m_when" ng-model="data.m_when" autocomplete="off">
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="form-group row">
+								<label for="m_cost" class="col-md-3 control-label">cost</label>
+								<div class="col-md-9">
+									<input type="text" class="form-control" name="m_cost" ng-model="data.m_cost" autocomplete="off">
+								</div>
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="form-group row">
+								<label for="m_expect" class="col-md-1 control-label">期望</label>
+								<div class="col-md-11">
+									<input type="text" class="form-control" name="m_expect" ng-model="data.m_expect" autocomplete="off">
+								</div>
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="form-group row" ng-show="data.m_id">
+								<label for="m_result" class="col-md-1 control-label">结果</label>
+								<div class="col-md-11">
+									<input type="text" class="form-control" name="m_result" ng-model="data.m_result" autocomplete="off">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-offset-1 col-md-11">
+							<button type="submit" class="btn btn-sm btn-success">Submit</button>
+							<button type="reset" class="btn btn-sm btn-default">Reset</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+			本月目标
+			<div class="row">
+				<div class="list-group">
+					<a class="list-group-item" ng-repeat="item in months.lists" ng-click="month(item.m_id)">
+						<h4 class="list-group-item-heading">{{ item.m_name }} <small>工作时：<code>{{ item.m_cost }}</code></small></h4>
+						<p class="list-group-item-text">{{ item.m_expect }}</p>
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6">
+			完成的目标
+			<div class="row">
+				<div class="list-group">
+					<a class="list-group-item" ng-repeat="item in months.finish">
+						<h4 class="list-group-item-heading">{{ item.m_name }} <small>工作时：<code>{{ item.m_cost }}</code></small></h4>
+						<p class="list-group-item-text">{{ item.m_result }}</p>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

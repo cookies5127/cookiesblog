@@ -1,0 +1,76 @@
+<div class="row" ng-controller="markdown">
+	<div class="col-md-12">
+		<div class="alert alert-{{ info.type }} alert-dismissible markdown-alert" role="alert" ng-hide="info.show">
+			<button type="button" class="close" ng-click="alertToggle()"><span>&times;</span></button>
+			{{ info.content }}
+		</div>
+	</div>
+	<ul class="nav nav-tabs navbar-fixed-top markdown-navbar">
+		<li>
+			<label for="menu-list" id="menuControl">
+				<i class="glyphicon glyphicon-th-list"></i>
+			</label>
+		</li>
+		<li>
+			<a ui-sref="admin.dashboard">
+				<i class="glyphicon glyphicon-dashboard"></i>
+			</a>
+		</li>
+		<li>
+			<a ng-click="add()">
+				<i class="glyphicon glyphicon-plus"></i>
+			</a>
+		</li>
+		<li>
+			<a ng-click="save(markdown)">
+				<i class="glyphicon glyphicon-floppy-disk"></i>
+			</a>
+		</li>
+		<li>
+			<a ng-click="show(markdown)">
+				<i class="glyphicon glyphicon-blackboard"></i>
+			</a>
+		</li>
+		<li>
+			<a ui-sref="admin.category">
+				<i class="glyphicon glyphicon-tag"></i>
+			</a>
+		</li>
+		<li>
+			<a>
+				{{ markdown.title }}
+			</a>
+		</li>
+	</ul>
+	<input type="checkbox" id="menu-list">
+	<div class="col-md-6 testBox">
+		<div class="input-group input-group-sm markdown-search">
+			<input type="text" class="form-control" placeholder="search for.." ng-model="input">
+			<span class="input-group-btn">
+				<button class="btn btn-default" type="button" ng-hide="plus"><i class="glyphicon glyphicon-search"></i> </button>
+				<button class="btn btn-default" ng-click="noteBook(input, test[2])" ng-show="plus"><i class="glyphicon glyphicon-plus"></i> </button>
+			</span>
+		</div>
+		<h4 class="markdown-title">
+			<a class="pull-left" ng-click="showList(test[1], test[0])"><i class="glyphicon glyphicon-chevron-left"></i></a>
+			课程&nbsp;&nbsp;&nbsp;
+			<a class="pull-right"><i class="glyphicon glyphicon-chevron-right"></i></a>
+		</h4>
+		<ul>
+			<li ng-repeat="item in lists" ng-hide="note">
+				<a ng-click="showList(item.location, item.c_id)" ng-hide="note">{{ item.c_name }}</a>
+			</li>
+			<li ng-repeat="item in notes" ng-show="note">
+				<a ng-click="showNote(item.n_id)">{{ item.title }}</a>
+			</li>
+		</ul>
+	</div>
+	<div class="markdown">
+		<div class="col-md-6 input">
+			<textarea class="form-control inputText" ng-model="markdown.body" tab autoheight placeholder="markdown"> </textarea>
+		</div>
+		<div class="col-md-6 output hidden-sm hidden-xs" id="output">
+			<div class="article-main outputText" ng-bind-html="outputText" autoheight></div>
+		</div>
+	</div>
+</div>

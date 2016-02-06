@@ -1,0 +1,50 @@
+<div class="" ng-controller="scheduleCtrl">
+	<h2>日程查询</h2>
+	<div class="row">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<div class="row">
+					<label for="date" class="label-control col-md-1">查询日期</label>
+					<div class="col-md-2">
+						<div class="input-group input-group-sm">
+							<input type="text" class="form-control" name="date" ng-model="date">
+						</div>
+					</div>
+					<div class="col-md-5">
+						<a class="btn btn-sm btn-success" ng-click="look(date)">Submit</a>
+						<a class="btn btn-sm btn-primary" ng-click="today()">Today</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<h4>{{ show }}</h4>
+			<p>{{ lists.length == 0 ? '没有记录' : '' }}</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+			<div class="row">
+				<div class="list-group">
+					<a class="list-group-item list-group-item-{{ schedule.s_type }}" ng-repeat="schedule in lists">
+						{{ schedule.s_name }} 工作时：<code>{{ schedule.s_cost }}</code> 分钟：<code>{{ schedule.s_minute }}</code>
+						<p class="pull-right hidden-xs">{{ schedule.created_at }}</p>
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6" ng-hide="!summary">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<h4>{{ summary.ss_content }}</h4>
+					<p>工作比例：{{ summary.ss_work }}，学习比例：{{ summary.ss_learning }}，锻炼比例：{{ summary.ss_exercise }}，浪费时间：<code>{{ summary.ss_waste }}</code></p>
+					<p>得分：{{ summary.ss_score }}</p>
+					<p>早上{{ summary.ss_getup > 0 ? '晚起了' + summary.ss_getup : '起来挺早' }}分钟</p>
+					<p>晚上{{ summary.ss_finish < 0 ? '早睡了' + -summary.ss_finish : '睡得挺晚' }}分钟</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

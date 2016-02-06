@@ -1,0 +1,18 @@
+<div ng-controller="IndexCtrl">
+
+	<div data-ng-include=" '/template/block/header.html' "> </div>
+	
+	<div class="row main">
+		<div class="container">
+			<div class="col-md-9">
+				<div ui-view> </div>
+			</div>
+			<div class="col-md-3">
+				<div data-ng-include=" '/template/block/side-navbar.html' "> </div>
+			</div>
+		</div>
+	</div>
+
+	<div data-ng-include=" '/template/block/footer.html' "> </div>
+
+</div>

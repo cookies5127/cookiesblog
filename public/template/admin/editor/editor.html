@@ -1,0 +1,33 @@
+<div data-ng-include=" '/template/block/header.html' "> </div>
+<div class="row" ng-controller="editorCtrl">
+	<ul class="nav nav-tabs navbar-fixed-top markdown-navbar">
+		<li>
+			<a ng-click="clean()">
+				<i class="glyphicon glyphicon-trash"></i>
+			</a>
+		</li>
+		<li>
+			<a ng-click="save(data)">
+				<i class="glyphicon glyphicon-floppy-disk"></i> {{count}}
+			</a>
+		</li>
+		<li>
+			<a ng-click="show(data)">
+				<i class="glyphicon glyphicon-camera"></i>
+			</a>
+		</li>
+		<li>
+			<a>
+				{{ data.title }}
+			</a>
+		</li>
+	</ul>
+	<div class="markdown">
+		<div class="col-md-6 input">
+			<textarea class="form-control inputText" ng-model="data.body" tab autoheight placeholder="markdown"> </textarea>
+		</div>
+		<div class="col-md-6 output hidden-sm hidden-xs" id="output">
+			<div class="article-main outputText" ng-bind-html="outputText" autoheight></div>
+		</div>
+	</div>
+</div>

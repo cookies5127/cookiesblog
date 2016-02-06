@@ -1,0 +1,85 @@
+<div class="" ng-controller="categoryCtrl">
+	<h2>分类列表</h2>
+	<div class="row">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<form ng-submit="dataSubmit()">
+					<div class="alert alert-info">增加笔记本的分类名称，0为角色，剩下的以角色为课程，再为专题学习</div>
+					<div class="row">
+						<div class="col-md-4">
+							<div class="form-group row">
+								<label for="c_name" class="col-md-3 control-label">名称</label>
+								<div class="col-md-9">
+									<input type="text" class="form-control" name="c_name" ng-model="data.c_name" autocomplete="off">
+								</div>
+							</div>
+						</div>
+						<div class="col-md-2">
+							<div class="form-group row">
+								<label for="c_slug" class="col-md-3 control-label">slug</label>
+								<div class="col-md-9">
+									<input type="text" class="form-control" name="c_slug" ng-model="data.c_slug" autocomplete="off">
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="form-group row">
+								<label for="p_id" class="col-md-3 control-label">上一层</label>
+								<div class="col-md-9">
+									<select name="p_id" ng-model="data.p_id" class="form-control">
+										<option value="0" ng-selected="true">角色</option>
+										<option ng-repeat="item in selects" value="{{ item.c_id }}">{{ item.c_name }}</option>
+									</select>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="form-group row">
+								<label for="location" class="col-md-3 control-label">位置</label>
+								<div class="col-md-9">
+									<select name="p_id" ng-model="data.location" class="form-control">
+										<option value="top" ng-selected="true">角色</option>
+										<option value="lesson">课程</option>
+										<option value="seminar">专题</option>
+									</select>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="form-group row">
+								<label for="c_description" class="col-md-1 control-label">描述</label>
+								<div class="col-md-11">
+									<input type="text" class="form-control" name="c_description" ng-model="data.c_description" autocomplete="off">
+								</div>
+							</div>
+						</div>
+						<div class="col-md-offset-1 col-md-11">
+							<button type="submit" class="btn btn-success">Submit</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>id</th>
+				<th>name</th>
+				<th>slug</th>
+				<th>选项</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="item in lists">
+				<td>{{ item.c_id}}</td>
+				<td>{{ item.p_id}}</td>
+				<td>{{ item.c_name }}</td>
+				<td>{{ item.c_slug }}</td>
+				<td>
+					<a class="btn btn-sm btn-success" ui-sref="admin.lesson.show({ lid:item.l_id })"><i class="glyphicon glyphicon-edit"></i> show</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

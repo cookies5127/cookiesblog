@@ -1,0 +1,24 @@
+					<div class="info">
+						<h3><a href="http://weibo.com/czcxui">
+							<img class="avtar" src="/asset/img/logo.jpg">
+							Cookies
+						</a></h3>
+						<div class="i-list">
+							<ul class="">
+								<li>2012-至今 天津商业大学</li>
+								<li></li>
+							</ul>
+						</div>
+						<div class="i-list">
+							<h4>文章分类</h4>
+							<ul>
+								<li ng-repeat="item in metas">
+									<a ui-sref="index.list({ cates:item.m_id })">
+										{{ item.name }}
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="biaoqian">
+					</div>

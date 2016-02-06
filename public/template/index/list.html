@@ -1,0 +1,10 @@
+		<div class="name-list" ng-controller="postList">
+			<h2>{{ cates }}</h2>
+			<ul>
+				<li ng-repeat="item in posts">
+					<a ui-sref="show({ postid:item.id,url:'posts' })">
+						{{ item.title }}<small class="pull-right hidden-xs">{{ item.created_at }}</small>
+					</a>
+				</li>
+			</ul>
+		</div>
